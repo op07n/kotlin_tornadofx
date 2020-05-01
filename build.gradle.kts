@@ -54,13 +54,31 @@ javafx {
 
 
 
+tasks.withType<Jar> {
+    // Otherwise you'll get a "No main manifest attribute" error
+    manifest {
+        attributes["Main-Class"] = "de.klg71.tornado.MainKt"
+    }
+
+    // To add all of the dependencies otherwise a "NoClassDefFoundError" error
+    from(sourceSets.main.get().output)
+
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
+}
+
+
+
+
 
 //tasks.jar {
-tasks.withType(Jar::class) {	
-	manifest {
-		attributes["Main-Class"] = "${project.group}.MainKt"
-	}
-}
+//tasks.withType(Jar::class) {	
+//	manifest {
+//		attributes["Main-Class"] = "${project.group}.MainKt"
+//	}
+//}
 
 application {
     mainClassName = "${project.group}.MainKt"
