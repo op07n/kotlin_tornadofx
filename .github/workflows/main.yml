@@ -19,5 +19,13 @@ jobs:
           chmod +x gradlew
           ./gradlew build
           ls -R
+
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: artifact
+          path: ./build/distributions/kotlin_tornado.zip
+
+
 #      - name: Upload
 #        run: ./gradlew bintrayUploadAll -Dbintray_key=${{ secrets.bintray_key }}
