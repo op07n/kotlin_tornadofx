@@ -55,7 +55,8 @@ javafx {
 
 
 
-tasks.jar {
+//tasks.jar {
+tasks.withType(Jar::class) {	
 	manifest {
 		attributes["Main-Class"] = "${project.group}.MainKt"
 	}
