@@ -1,10 +1,26 @@
-plugins {
-    application
-    kotlin("jvm") version "1.3.0"
+import org.gradle.api.JavaVersion.VERSION_11
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-    // We need the javafx plugin since java 11
-    id("org.openjfx.javafxplugin") version "0.0.7"
+
+plugins {
+	kotlin("jvm") version "1.3.0"
+	id("application")
+	id("org.openjfx.javafxplugin") version "0.0.7"
+//	id("com.github.johnrengelman.shadow") version "5.1.0"
 }
+
+val applicationVersion: String by project
+
+group = "de.klg71.tornado"
+version = applicationVersion
+
+java {
+	sourceCompatibility = VERSION_11
+	targetCompatibility = VERSION_11
+}
+
+
+
 dependencies {
     compile(kotlin("stdlib-jdk8"))
 
@@ -21,11 +37,11 @@ javafx {
     modules("javafx.controls")
 }
 
-application {
+//application {
 
     // Declare the main class for the application plugin
-    mainClassName = "de.klg71.tornado.MainKt"
-}
+//    mainClassName = "de.klg71.tornado.MainKt"
+//}
 
  
 //tasks.withType(Jar::class) {
@@ -39,51 +55,22 @@ application {
 
 
 
-
-
-//tasks.withType<KotlinCompile> {
-//    kotlinOptions.jvmTarget = "1.8"
-//}
-
-val fatJar = task("fatJar", type = Jar::class) {
-    baseName = project.name
-    manifest {
-        attributes["Implementation-Title"] = "Guessing Game"
-        attributes["Implementation-Version"] = "1.0"
-        attributes["Main-Class"] = "de.klg71.tornado.MainKt"
-    }
-    from(configurations.runtime.map({ if (it.isDirectory) it else zipTree(it) }))
-    with(tasks["jar"] as CopySpec)
+tasks.jar {
+	manifest {
+		attributes["Main-Class"] = "${project.group}.MainKt"
+	}
 }
 
-tasks {
-    "build" {
-        dependsOn(fatJar)
-    }
+application {
+    mainClassName = "${project.group}.MainKt"
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+tasks.withType<KotlinCompile> {
+	kotlinOptions.jvmTarget = "1.8"
+}
 
 
 
 // Set the jvmTarget to 1.8 to support inlining
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> { kotlinOptions.jvmTarget = "1.8" }
+// tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> { kotlinOptions.jvmTarget = "1.8" }
 
