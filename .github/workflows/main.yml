@@ -24,7 +24,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: artifact
-          path: ./build/distributions/kotlin_tornado.zip
+          path: ./build/distributions/kotlin_tornado-1.0.zip
 
 
 #      - name: Upload
