@@ -31,7 +31,7 @@ application {
 tasks.withType(Jar::class) {
     manifest {
         attributes["Manifest-Version"] = "1.0"
-        attributes["Main-Class"] = "fasfasfasfdasf"
+        attributes["Main-Class"] = "de.klg71.tornado.MainApp"
         attributes["Author"] = "sdfaffdasf"
     }
 }
