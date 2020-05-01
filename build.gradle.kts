@@ -27,17 +27,17 @@ application {
     mainClassName = "de.klg71.tornado.MainApp"
 }
 
-
-
+ 
 jar {
     manifest {
-        attributes 'Main-Class': 'Main'
-    }
-
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        attributes(
+ 
+                'Main-Class': 'de.klg71.tornado.MainApp'
+        )
     }
 }
+
+
 
 
 
