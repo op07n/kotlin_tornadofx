@@ -27,6 +27,21 @@ application {
     mainClassName = "de.klg71.tornado.MainApp"
 }
 
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+
+
+
 // Set the jvmTarget to 1.8 to support inlining
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> { kotlinOptions.jvmTarget = "1.8" }
 
