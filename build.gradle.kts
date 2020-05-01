@@ -12,7 +12,7 @@ plugins {
 // val applicationVersion: String by project
 
 group = "de.klg71.tornado"
-version = applicationVersion
+version = "1.0"
 
 java {
 	sourceCompatibility = VERSION_11
