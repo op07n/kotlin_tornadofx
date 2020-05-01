@@ -28,12 +28,11 @@ application {
 }
 
  
-jar {
+tasks.withType(Jar::class) {
     manifest {
-        attributes(
- 
-                'Main-Class': 'de.klg71.tornado.MainApp'
-        )
+        attributes["Manifest-Version"] = "1.0"
+        attributes["Main-Class"] = "fasfasfasfdasf"
+        attributes["Author"] = "sdfaffdasf"
     }
 }
 
