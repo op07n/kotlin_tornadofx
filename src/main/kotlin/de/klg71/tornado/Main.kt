@@ -4,9 +4,23 @@ import javafx.beans.property.SimpleIntegerProperty
 import tornadofx.*
 
 
-class MainApp : App(Main::class)
 
-class Main : View() {
+
+
+
+class MyApp: App(MyView::class)
+
+fun main(args: Array<String>) {
+    println("Hello....")
+    Application.launch(MyApp::class.java, *args)
+}
+
+
+
+
+
+
+class MyView : View() {
 
     private val number1 = SimpleIntegerProperty()
     private val number2 = SimpleIntegerProperty()
