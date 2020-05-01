@@ -9,7 +9,7 @@ plugins {
 //	id("com.github.johnrengelman.shadow") version "5.1.0"
 }
 
-val applicationVersion: String by project
+// val applicationVersion: String by project
 
 group = "de.klg71.tornado"
 version = applicationVersion
