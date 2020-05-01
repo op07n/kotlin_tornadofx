@@ -24,14 +24,14 @@ javafx {
 application {
 
     // Declare the main class for the application plugin
-    mainClassName = "de.klg71.tornado.MainApp"
+    mainClassName = "de.klg71.tornado.MainKt"
 }
 
  
 tasks.withType(Jar::class) {
     manifest {
         attributes["Manifest-Version"] = "1.0"
-        attributes["Main-Class"] = "de.klg71.tornado.MainApp"
+        attributes["Main-Class"] = "de.klg71.tornado.MainKt"
         attributes["Author"] = "sdfaffdasf"
     }
 }
