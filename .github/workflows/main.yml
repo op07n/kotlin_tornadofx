@@ -16,7 +16,8 @@ jobs:
           java-version: 1.8
       - name: Build 
         run: |
-         ./gradlew build
-         ls -R
+          chmod +x gradlew
+          ./gradlew build
+          ls -R
 #      - name: Upload
 #        run: ./gradlew bintrayUploadAll -Dbintray_key=${{ secrets.bintray_key }}
