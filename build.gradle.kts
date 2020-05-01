@@ -28,13 +28,56 @@ application {
 }
 
  
-tasks.withType(Jar::class) {
+//tasks.withType(Jar::class) {
+//    manifest {
+//        attributes["Manifest-Version"] = "1.0"
+//        attributes["Main-Class"] = "de.klg71.tornado.MainKt"
+//        attributes["Author"] = "sdfaffdasf"
+//    }
+//}
+
+
+
+
+
+
+//tasks.withType<KotlinCompile> {
+//    kotlinOptions.jvmTarget = "1.8"
+//}
+
+val fatJar = task("fatJar", type = Jar::class) {
+    baseName = project.name
     manifest {
-        attributes["Manifest-Version"] = "1.0"
+        attributes["Implementation-Title"] = "Guessing Game"
+        attributes["Implementation-Version"] = "1.0"
         attributes["Main-Class"] = "de.klg71.tornado.MainKt"
-        attributes["Author"] = "sdfaffdasf"
+    }
+    from(configurations.runtime.map({ if (it.isDirectory) it else zipTree(it) }))
+    with(tasks["jar"] as CopySpec)
+}
+
+tasks {
+    "build" {
+        dependsOn(fatJar)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
